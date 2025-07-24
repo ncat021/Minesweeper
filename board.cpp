@@ -114,6 +114,8 @@ void Board::showCurrentBoard()
 				else if (m_board[x][y].getType() == TYPE_MINE)
 					cout << "X "; // Mostrar mina
 			}
+			else if (m_board[x][y].getIsFlagged() == true)
+				cout << "F "; // Mostrar bandera
 			else
 				cout << "# "; // Mostrar casilla no revelada
 
@@ -144,6 +146,28 @@ int Board::getAdjacentMines(int x, int y) const
 	return count;
 }
 
+int Board::getAdjacentFlags(int x, int y) const
+{
+	int count = 0;
+	for (int i = -1; i <= 1; i++)
+	{
+		for (int j = -1; j <= 1; j++)
+		{
+			if (i == 0 && j == 0) continue;
+			int newX = x + i;
+			int newY = y + j;
+			if (newX >= 0 && newX < m_sizeX && newY >= 0 && newY < m_sizeY)
+			{
+				if (m_board[newX][newY].getIsFlagged() == true)
+				{
+					count++;
+				}
+			}
+		}
+	}
+	return count;
+}
+
 void Board::revealTile(int x, int y)
 {
 	if (m_board[x][y].getType() == TYPE_EMPTY && !m_board[x][y].getIsRevealed())
@@ -153,6 +177,9 @@ void Board::revealTile(int x, int y)
 	}
 	else
 		m_board[x][y].setIsRevealed(true);
+
+	if (m_board[x][y].getIsFlagged() == true) // Si la casilla tiene bandera, quitarla
+		m_board[x][y].setIsFlagged(false);
 }
 
 bool Board::revealAdjacentTiles(int x, int y)
@@ -225,6 +252,17 @@ bool Board::revealAdjacentTiles(int x, int y)
 		revealTile(x, y);
 
 	return false; // El jugador no ha perdido
+}
+
+void Board::addFlag(int x, int y)
+{
+	if (m_board[x][y].getIsRevealed() == false) // Si la casilla no está revelada
+	{
+		if (m_board[x][y].getIsFlagged() == false) // Si la casilla no tiene bandera
+			m_board[x][y].setIsFlagged(true); // Añadir bandera
+		else
+			m_board[x][y].setIsFlagged(false); // Quitar bandera
+	}
 }
 
 void Board::removeFirstPosition(Position array[], int& n_array) const

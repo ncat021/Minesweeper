@@ -45,6 +45,11 @@ public:
 	Revela la casilla en las coordenadas (x, y) y las casillas adyacentes si es necesario, devuelve true si el jugador pierde
 	*/
 	bool revealAdjacentTiles(int x, int y);
+
+	/*
+	Añade una bandera a la casilla en las coordenadas (x, y)
+	*/
+	void addFlag(int x, int y);
 	
 
 private:
@@ -59,6 +64,11 @@ private:
 	Devuelve la cantidad de minas adyacentes a una casilla determinada por sus coordenadas (x, y)
 	*/
 	int getAdjacentMines(int x, int y) const;
+
+	/*
+	Devuelve las banderas adyacentes a una casilla determinada por sus coordenadas (x, y)
+	*/
+	int getAdjacentFlags(int x, int y) const;
 
 	/*
 	Revela la casilla en las coordenadas (x, y)

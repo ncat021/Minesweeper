@@ -5,6 +5,7 @@ Tile::Tile()
 {
 	m_type = TYPE_EMPTY;
 	m_isRevealed = false;
+	m_isFlagged = false;
 }
 Tile::~Tile()
 {
@@ -36,4 +37,13 @@ bool Tile::getIsRevealed() const
 void Tile::setIsRevealed(const bool& isRevealed)
 {
 	m_isRevealed = isRevealed;
+}
+
+bool Tile::getIsFlagged() const
+{
+	return m_isFlagged;
+}
+void Tile::setIsFlagged(const bool& isFlagged)
+{
+	m_isFlagged = isFlagged;
 }
