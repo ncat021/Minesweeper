@@ -23,6 +23,7 @@ public:
 
 	int getSizeX();
 	int getSizeY();
+	Tile getTile(int x, int y);
 	int getRevealedTiles();
 	int getNumMines();
 

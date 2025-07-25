@@ -49,6 +49,10 @@ int Board::getSizeY()
 {
 	return m_sizeY;
 }
+Tile Board::getTile(int x, int y)
+{
+		return m_board[x][y];
+}
 int Board::getRevealedTiles()
 {
 	return m_revealedTiles;
