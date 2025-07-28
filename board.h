@@ -51,6 +51,11 @@ public:
 	Añade una bandera a la casilla en las coordenadas (x, y)
 	*/
 	void addFlag(int x, int y);
+
+	/*
+	Devuelve la cantidad de minas adyacentes a una casilla determinada por sus coordenadas (x, y)
+	*/
+	int getAdjacentMines(int x, int y) const;
 	
 
 private:
@@ -61,10 +66,7 @@ private:
 	int m_numMines;
 	int m_revealedTiles;
 	
-	/*
-	Devuelve la cantidad de minas adyacentes a una casilla determinada por sus coordenadas (x, y)
-	*/
-	int getAdjacentMines(int x, int y) const;
+	
 
 	/*
 	Devuelve las banderas adyacentes a una casilla determinada por sus coordenadas (x, y)

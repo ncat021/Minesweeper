@@ -2,7 +2,6 @@
 
 Board::Board()
 {
-	m_revealedTiles = 0;
 }
 
 Board::~Board()
@@ -32,6 +31,7 @@ Board::Board(difficulty diff)
 			// Initialize with a predefined number of mines and grid size for hard difficulty
 			break;
 	}
+	m_revealedTiles = 0;
 }
 
 Board::Board(int sizeX, int sizeY, int numMines)
@@ -39,6 +39,7 @@ Board::Board(int sizeX, int sizeY, int numMines)
 	m_sizeX = sizeX;
 	m_sizeY = sizeY;
 	m_numMines = numMines;
+	m_revealedTiles = 0;
 }
 
 int Board::getSizeX()
